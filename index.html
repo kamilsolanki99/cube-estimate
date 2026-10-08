@@ -46,13 +46,13 @@
 </style>
 </head>
 <body>
-
 <header class="no-print bg-slate-900 text-white sticky top-0 z-20 shadow">
   <div class="px-3 py-2 flex flex-wrap items-center gap-2">
     <h1 class="text-base font-bold tracking-wide">ESTIMATE GENERATOR</h1>
-    <div class="flex items-center text-xs font-bold mx-auto bg-slate-800 p-1 gap-1 rounded-full ring-1 ring-slate-600">
-      <span class="bg-white text-slate-900 px-5 py-1.5 rounded-full shadow">Estimate</span>
-      <button onclick="goReceipt()" class="text-slate-300 hover:text-white px-5 py-1.5 rounded-full">Receipt</button>
+    <div class="relative flex items-center text-xs font-bold mx-auto bg-slate-800 p-1 rounded-full ring-1 ring-slate-600">
+      <span id="tab-pill" class="absolute top-1 bottom-1 left-1 w-[92px] rounded-full bg-white shadow transition-transform duration-300 ease-out"></span>
+      <span id="tab-estimate" class="relative z-10 w-[92px] text-center text-slate-900 px-2 py-1.5 transition-colors">Estimate</span>
+      <button id="tab-receipt" onclick="goReceipt()" class="relative z-10 w-[92px] text-center text-slate-300 hover:text-white px-2 py-1.5 transition-colors">Receipt</button>
     </div>
     <button onclick="downloadPDF()" class="btn bg-red-600 hover:bg-red-500 text-white text-xs font-semibold px-3 py-1.5 rounded">PDF</button>
     <button onclick="window.print()" class="btn bg-slate-200 hover:bg-white text-slate-900 text-xs font-semibold px-3 py-1.5 rounded">Print</button>
@@ -342,7 +342,11 @@ function setImg(sheetImg, prevImg, src){
 function generateEstimate(){ sync(); document.getElementById('preview-wrap').scrollIntoView({behavior:'smooth'}); toast('Estimate '+($('f-estNo').value||'')+' generated'); }
 function goReceipt(){
   try{ localStorage.setItem('carryToReceipt', JSON.stringify({custName:$('f-custName').value,custAddr:$('f-custAddr').value,items})); }catch(e){}
-  location.href='receipt.html?import=1';
+  const p=$('tab-pill'), a=$('tab-estimate'), b=$('tab-receipt');
+  if(p) p.style.transform='translateX(100%)';
+  if(a){ a.classList.remove('text-slate-900'); a.classList.add('text-slate-300'); }
+  if(b){ b.classList.remove('text-slate-300'); b.classList.add('text-slate-900'); }
+  setTimeout(()=>{ location.href='receipt.html?import=1'; }, 300);
 }
 
 /* ================= SETTINGS (fixed to template — no UI) ================= */
