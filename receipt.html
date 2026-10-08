@@ -41,7 +41,7 @@
   @media (max-width:1023px){ #estimate-sheet{ width:100%; } }
   input, textarea { outline:none; }
   input:focus, textarea:focus { border-color:#b98a2f !important; box-shadow:0 0 0 2px rgba(222,174,102,.25); }
-  .btn { transition:all .15s ease; } .btn:active { transform:scale(.98); }
+  .btn { transition:all .15s ease; }   .btn:active { transform:scale(.98); }
   #toast { transition:opacity .3s, transform .3s; }
 </style>
 </head>
@@ -49,10 +49,10 @@
 
 <header class="no-print bg-slate-900 text-white sticky top-0 z-20 shadow">
   <div class="px-3 py-2 flex flex-wrap items-center gap-2">
-    <h1 class="text-base font-bold tracking-wide mr-auto">RECEIPT GENERATOR</h1>
-    <div class="flex rounded overflow-hidden text-xs font-bold">
-      <button onclick="location.href='index.html'" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1.5">Estimate</button>
-      <span class="bg-white text-slate-900 px-3 py-1.5">Receipt</span>
+    <h1 class="text-base font-bold tracking-wide">RECEIPT GENERATOR</h1>
+    <div class="flex items-center text-xs font-bold mx-auto bg-slate-800 p-1 gap-1 rounded-full ring-1 ring-slate-600">
+      <button onclick="location.href='index.html'" class="text-slate-300 hover:text-white px-5 py-1.5 rounded-full">Estimate</button>
+      <span class="bg-white text-slate-900 px-5 py-1.5 rounded-full shadow">Receipt</span>
     </div>
     <button onclick="downloadPDF()" class="btn bg-red-600 hover:bg-red-500 text-white text-xs font-semibold px-3 py-1.5 rounded">PDF</button>
     <button onclick="window.print()" class="btn bg-slate-200 hover:bg-white text-slate-900 text-xs font-semibold px-3 py-1.5 rounded">Print</button>
